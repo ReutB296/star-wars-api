@@ -15,3 +15,21 @@
    color: none;
 
 }
+
+.headline{
+    color: blanchedalmond;
+    height: fit-content;
+    margin: auto;
+}
+
+.img_container{
+    max-width: 331px;
+    max-height: 533px;
+    position: absolute;
+
+}
+
+.img_container img{
+    width: 100%;
+
+}

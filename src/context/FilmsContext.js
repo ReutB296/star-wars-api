@@ -15,8 +15,8 @@ export default function FilmsProvider({ children }) {
     useEffect(() => {  
         axios.get('https://swapi.dev/api/films')
         .then(response => {
-            const ArrayWithIsColored = response.data.results.map(film => ({...film, isColored:false}));
-            setFilms(ArrayWithIsColored);
+            const ArrayWithImg= response.data.results.map(film => ({...film, img:`/${film.episode_id}.jpg`}));
+            setFilms(ArrayWithImg);
         }, error => {
           console.log(error);
         });

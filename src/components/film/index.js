@@ -4,7 +4,6 @@ import { FilmsContext } from '../../context/FilmsContext';
 import {
     useParams,
 } from "react-router-dom";
-import { Spinner } from 'react-bootstrap';
 
 
 export default function Film (){
@@ -12,7 +11,6 @@ export default function Film (){
     const {films} = useContext(FilmsContext);
     const { title } = useParams();
     const [isColored, setIsColored] = useState(false);
-    const [favoritesId, setFavoritesId] = useState([]);
     const [selectedFilm, setselectedFilm] = useState(null);
  
 
@@ -23,15 +21,10 @@ export default function Film (){
     useEffect(() =>{  
         if(isColored){ //add to localStorage and to favoritesList
             localStorage.setItem(selectedFilm?.episode_id, selectedFilm?.title);
-            setFavoritesId([...favoritesId, selectedFilm?.episode_id]);
         }else{  //remove 
             localStorage.removeItem(selectedFilm?.episode_id);
-            setFavoritesId(favoritesId.filter(item => item !== selectedFilm?.episode_id));
-            
         } 
-
-    }, [isColored]);
-    
+    }, [isColored, selectedFilm]);
 
     
     const heartColor =  isColored ?  '#f20089' : '#808080'  ;  //GRAY OR PINK
@@ -40,7 +33,7 @@ export default function Film (){
         const selectedIndex = films.findIndex(film => film.title === title);
         setselectedFilm(films[selectedIndex]);
         setIsColored(localStorage.getItem(films[selectedIndex]?.episode_id) ? true : false)
-    }, [title]); 
+    }, [films, title]); 
 
 
 
@@ -53,11 +46,13 @@ export default function Film (){
                         </button>
                         <h1> {selectedFilm.title} </h1>
                         <h5>{selectedFilm.director}</h5>
-                        <h1>iscolored {isColored.toString()}</h1>
+                        <div className="img_container">
+                            <img src={selectedFilm.img}/>
+                        </div>
 
                     </div>
                 :
-                <Spinner animation="border" role="status"></Spinner>
+                <h1 className="headline">Choose a movie from the list</h1>
 
                }
      </>

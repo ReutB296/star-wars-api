@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 50px;
     color: white;
-    padding: 30px;
+    padding: 0 30px;
     background-image: url('../../img/background_header.jpg');
 
 }
@@ -98,5 +98,12 @@ div {
 	from { box-shadow: 0 0 10px #7EC855; }
 	50% { box-shadow: 0 0 16px #7EC855; }
 	to { box-shadow: 0 0 10px #7EC855; }
+}
+
+.clickMe{
+	margin:0;
+	padding-top: 10px;
+	position: relative;
+	left: -30px;
 }
 
