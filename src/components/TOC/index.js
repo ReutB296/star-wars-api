@@ -25,6 +25,18 @@ export default function TOC (){
                 <Spinner animation="border" role="status"></Spinner>
             }
 
+        <section className="the-demo">
+                <div className="example-item">
+                    <div className="lightsaber">
+                        <label htmlFor="yoda-example"></label>
+                        <input type="checkbox" id="yoda-example" defaultChecked={true}/>
+                        <div className="switch"></div>
+                        <div className="plasma yoda"></div>
+                    </div>
+                </div>
+	    </section>
+
+
         </div>
     )
 }

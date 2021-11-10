@@ -1,0 +1,9 @@
+.film_container{
+    max-height: 100vh;
+    background-color:#151515;
+    color: white;
+    flex: 1;
+    padding: 50px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+}
