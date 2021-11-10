@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { findByLabelText } from '@testing-library/react';
 
 
 export const FilmsContext = React.createContext({
@@ -14,7 +15,8 @@ export default function FilmsProvider({ children }) {
     useEffect(() => {  
         axios.get('https://swapi.dev/api/films')
         .then(response => {
-            setFilms(response.data.results);
+            const ArrayWithIsColored = response.data.results.map(film => ({...film, isColored:false}));
+            setFilms(ArrayWithIsColored);
         }, error => {
           console.log(error);
         });

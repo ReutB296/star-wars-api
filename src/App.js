@@ -21,9 +21,9 @@ function App() {
                       <TOC/>
                 
                       <Switch>
-                        <Route path="/:title" >
-                            <Film/>
-                        </Route>
+                          <Route path="/:title" >
+                              <Film/>
+                          </Route>
                       </Switch>
                   </div>
             </div>
