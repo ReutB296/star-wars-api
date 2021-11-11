@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 50px;
     color: white;
-    padding: 0 30px;
+    padding-left: 70px;
     background-image: url('../../img/background_header.jpg');
 
 }
@@ -16,7 +16,7 @@
 section{
     position: absolute;
     bottom: 30px;
-    left: 100px;
+    left: 150px;
 }
 
 .lightsaber label {
