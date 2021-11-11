@@ -9,8 +9,9 @@
     background-image: url('../../img/sw_logo.png');
     background-size: contain;
     width: 100%;
-    max-width: 203px;
+    max-width: 186px;
     height: 100%;
     max-height: 88px;
+    min-height: 80px;
     margin: auto ;
 }

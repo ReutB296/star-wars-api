@@ -1,9 +1,11 @@
 import './style.css';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { FilmsContext } from '../../context/FilmsContext';
 import {
     useParams,
 } from "react-router-dom";
+import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 
 
 export default function Film (){
@@ -12,7 +14,11 @@ export default function Film (){
     const { title } = useParams();
     const [isColored, setIsColored] = useState(false);
     const [selectedFilm, setselectedFilm] = useState(null);
- 
+    const [characters, setCharacters] = useState([]);
+    const heartColor =  isColored ?  '#f20089' : '#808080'  ;  //GRAY OR PINK
+    const [pageNumber, setPageNumber] = useState(0);
+    const [displayCharacters, setDisplayCharacters] = useState([]);
+
 
     const handleClick = () =>{
         setIsColored(!isColored);
@@ -27,14 +33,50 @@ export default function Film (){
     }, [isColored, selectedFilm]);
 
     
-    const heartColor =  isColored ?  '#f20089' : '#808080'  ;  //GRAY OR PINK
 
     useEffect(() =>{ 
         const selectedIndex = films.findIndex(film => film.title === title);
         setselectedFilm(films[selectedIndex]);
-        setIsColored(localStorage.getItem(films[selectedIndex]?.episode_id) ? true : false)
-    }, [films, title]); 
+        setIsColored(localStorage.getItem(films[selectedIndex]?.episode_id) ? true : false);
+        setPageNumber(0);
+    }, [films, title]);
 
+
+    const getAllChars = useCallback((urls) => {
+        let peopleArr = [];
+        const promiseArray = [];
+        urls.forEach(url => {
+            promiseArray.push(axios.get(url).then(({data}) => peopleArr.push(data)));
+
+        })
+        Promise.all(promiseArray).then(() => {
+        setCharacters(peopleArr);
+        });
+      },[]);
+
+    useEffect(() => {
+        if(!selectedFilm) return;
+        getAllChars(selectedFilm.characters);
+    }, [selectedFilm, getAllChars])
+
+
+    const charPerPage = 5;
+    const pagesVisited = pageNumber * charPerPage;
+    const pageCount = Math.ceil(characters.length / charPerPage);
+
+    useEffect(() => {
+        if(!characters) return;
+        setDisplayCharacters( characters
+        .slice(pagesVisited, pagesVisited + charPerPage)
+        .map((char, index) => <li className="char" key={index}>{char.name}</li>));
+     
+    }, [characters, pageNumber])
+console.log("displayCharacters",displayCharacters)
+
+    const changePage = ({ selected }) =>{
+        setPageNumber(selected);
+        console.log("im here")
+    };
 
 
     return(
@@ -55,13 +97,30 @@ export default function Film (){
                                 </div>
                                 <div className="paragraph_container">
                                     <div className="created"><span>Release date: </span>{selectedFilm.release_date.split("-").reverse().join("/")}</div>
-                                    <div className="opening_title"><span>Opening crawl:</span></div>
-                                    <div className="opening_text"> "{selectedFilm.opening_crawl}"</div>
+                                    <div className="opening_title"><span>Opening crawl:</span> "{selectedFilm.opening_crawl}"</div>
+                                    <div className="charList_title">Related Characters:</div>
+                                    <div className="pagination">
+                                        <ul className="charList">
+                                            {displayCharacters ? displayCharacters : ""}
+                                        </ul>
+                                        <ReactPaginate
+                                            previousLabel={"<"}
+                                            nextLabel={">"}
+                                            pageCount={pageCount}
+                                            onPageChange={changePage}
+                                            containerClassName={"paginationBttns"}
+                                            previousLinkClassName={"previousBttn"}
+                                            nextLinkClassName={"nextBttn"}
+                                            disabledClassName={"paginationDisabled"}
+                            
+                                        />
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div>
+                   
                 :
                 <h1 className="headline">Loading...</h1>
 
