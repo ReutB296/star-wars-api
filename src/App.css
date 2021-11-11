@@ -11,3 +11,16 @@
     background-color: black;
 
 }
+
+@media screen and (max-width: 1200px){
+    .page_container{
+        height: inherit;
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+	.main_container{
+      flex-direction: column;
+	}
+}

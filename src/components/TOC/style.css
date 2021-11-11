@@ -13,6 +13,7 @@
     text-decoration: none;;
 }
 
+
 section{
     position: absolute;
     bottom: 30px;
@@ -112,3 +113,21 @@ div {
 	color: white;
 }
 
+@media screen and (max-width: 1200px) and (min-width:769px){
+	section{
+       bottom: 460px;
+	}
+}
+
+@media screen and (max-width: 768px){
+	section{
+      display: none;
+	}
+
+	.TOC_container{
+		flex-direction: row;
+		gap: 30px;
+		padding: 10px 20px;
+		
+	}
+}
