@@ -105,5 +105,10 @@ div {
 	padding-top: 10px;
 	position: relative;
 	left: -30px;
+	text-align: center;
+}
+
+.loading{
+	color: white;
 }
 

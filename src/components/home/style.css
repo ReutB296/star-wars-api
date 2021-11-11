@@ -1,0 +1,41 @@
+.head{
+    color: #efdf52;
+    grid-area: text;
+    height: fit-content;
+    font-family: "Star Jedi";
+    letter-spacing: 8px;
+    text-align: center;
+    line-height: 1.8em;
+   
+}
+
+.home_container{
+    max-height: 100vh;
+    background-color:#0d0d0e;
+    color: white;
+    flex: 1;
+    padding: 50px;
+    margin: 0 60px 60px 50px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas: "text img";
+}
+
+.img_container{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    grid-area: img;
+    position: absolute;
+    bottom: 30%;
+}
+
+.img_container img{
+    width: 100%;
+}
+
+.text_container{
+    grid-area: text;
+    text-align: center;
+    font-size: 30px;
+}

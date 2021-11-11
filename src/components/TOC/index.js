@@ -1,7 +1,6 @@
 import './style.css';
 import React, { useContext } from 'react';
 import { FilmsContext } from '../../context/FilmsContext';
-import { Spinner } from 'react-bootstrap';
 import {
     Link,
 } from "react-router-dom";
@@ -22,7 +21,7 @@ export default function TOC (){
                     </Link>
                  ) })
                 :
-                <Spinner animation="border" role="status"></Spinner>
+                <h3 className="loading">Loading...</h3>
             }
 
         <section className="the-demo">

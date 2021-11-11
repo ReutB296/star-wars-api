@@ -52,7 +52,7 @@ export default function Film (){
 
                     </div>
                 :
-                <h1 className="headline">Choose a movie from the list</h1>
+                <h1 className="headline">Loading...</h1>
 
                }
      </>
