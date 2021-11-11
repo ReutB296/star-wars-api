@@ -9,9 +9,10 @@
 
 .AddToFavBttn{
    background: transparent;
-   border: none;
    cursor: pointer;
    color: none;
+   border: none;
+  
 
 }
 
@@ -38,13 +39,41 @@
     width: 100%;
     height: 100%;
     border-bottom: 1px solid #3b3b3b;
+    padding-bottom: 10px;
+
 }
 
 .filmHeader_container{
     background-color: #282727;
-    padding-left: 20px;
+    padding: 10px 0 10px 20px;
 }
 
 .filmHeader_container h1, .filmHeader_container h5{
     margin:0;
+}
+
+.filmHeader_container h5{
+    color: #FFFFFF87;
+}
+
+.imgAndPara_container{
+    display: flex;
+}
+
+.opening_text{
+    line-height: 2em;
+    margin-top: 10px;
+}
+
+.paragraph_container{
+    padding: 25px 30px 10px 40px;
+    
+}
+
+.opening_title{
+    margin-top: 10px;
+}
+
+.created span, .opening_title span{
+    color: #ffffffa8;
 }

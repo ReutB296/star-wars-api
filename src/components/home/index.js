@@ -10,7 +10,7 @@ export default function Home(){
                     <p className="text">Choose a movie from the list to explore more</p>
                </div>
                <div className="img_container">
-                   <img className="img_veder" src={vader}/>
+                   <img className="img_veder" src={vader} alt="veder"/>
                </div>
        </div>
    )

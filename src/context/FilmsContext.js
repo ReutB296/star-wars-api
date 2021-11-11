@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { findByLabelText } from '@testing-library/react';
 
 
 export const FilmsContext = React.createContext({
