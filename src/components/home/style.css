@@ -27,7 +27,7 @@
     height: auto;
     grid-area: img;
     position: absolute;
-    bottom: 30%;
+    top: -18%;
 }
 
 .img_container img{
