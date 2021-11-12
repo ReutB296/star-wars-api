@@ -13,6 +13,8 @@
 
 }
 
+/*/////  media  ///////*/
+
 @media screen and (max-width: 1200px){
     .page_container{
         height: inherit;

@@ -19,7 +19,6 @@ function App() {
             <div className= "page_container">
                   <Header/>
                   <div className="main_container">
-                
                       <Switch>
                           <Route path="/" exact>
                               <TOC/>

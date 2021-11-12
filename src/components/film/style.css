@@ -130,6 +130,9 @@
     margin-top: 20px;
   }
 
+
+  /*/////  media  ///////*/
+
   @media screen and (max-width: 1200px){
       .film_container{
           min-height: 100vh;

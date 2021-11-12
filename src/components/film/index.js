@@ -18,11 +18,30 @@ export default function Film (){
     const heartColor =  isColored ?  '#f20089' : '#808080'  ;  //GRAY OR PINK
     const [pageNumber, setPageNumber] = useState(0);
     const [displayCharacters, setDisplayCharacters] = useState([]);
+    const charPerPage = 5;
+    const pagesVisited = pageNumber * charPerPage;
+    const pageCount = Math.ceil(characters.length / charPerPage);
 
 
     const handleClick = () =>{
         setIsColored(!isColored);
     }
+
+    const changePage = ({ selected }) =>{
+        setPageNumber(selected);
+    };
+
+    const getAllChars = useCallback((urls) => {
+        let peopleArr = [];
+        const promiseArray = [];
+        urls.forEach(url => {
+            promiseArray.push(axios.get(url).then(({data}) => peopleArr.push(data)));
+        })
+        Promise.all(promiseArray).then(() => {
+        setCharacters(peopleArr);
+        });
+    },[]);
+
 
     useEffect(() =>{  
         if(isColored){ //add to localStorage and to favoritesList
@@ -38,21 +57,8 @@ export default function Film (){
         const selectedIndex = films.findIndex(film => film.title === title);
         setselectedFilm(films[selectedIndex]);
         setIsColored(localStorage.getItem(films[selectedIndex]?.episode_id) ? true : false);
-        setPageNumber(0);
     }, [films, title]);
 
-
-    const getAllChars = useCallback((urls) => {
-        let peopleArr = [];
-        const promiseArray = [];
-        urls.forEach(url => {
-            promiseArray.push(axios.get(url).then(({data}) => peopleArr.push(data)));
-
-        })
-        Promise.all(promiseArray).then(() => {
-        setCharacters(peopleArr);
-        });
-      },[]);
 
     useEffect(() => {
         if(!selectedFilm) return;
@@ -60,23 +66,14 @@ export default function Film (){
     }, [selectedFilm, getAllChars])
 
 
-    const charPerPage = 5;
-    const pagesVisited = pageNumber * charPerPage;
-    const pageCount = Math.ceil(characters.length / charPerPage);
 
     useEffect(() => {
+        console.log("im here", pageNumber)
         if(!characters) return;
         setDisplayCharacters( characters
         .slice(pagesVisited, pagesVisited + charPerPage)
         .map((char, index) => <li className="char" key={index}>{char.name}</li>));
-     
-    }, [characters, pageNumber])
-console.log("displayCharacters",displayCharacters)
-
-    const changePage = ({ selected }) =>{
-        setPageNumber(selected);
-        console.log("im here")
-    };
+    }, [characters, pageNumber, pagesVisited])
 
 
     return(
@@ -112,7 +109,6 @@ console.log("displayCharacters",displayCharacters)
                                             previousLinkClassName={"previousBttn"}
                                             nextLinkClassName={"nextBttn"}
                                             disabledClassName={"paginationDisabled"}
-                            
                                         />
                                     </div>
                                     </div>

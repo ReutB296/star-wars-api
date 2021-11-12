@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export const FilmsContext = React.createContext({
     films: [],
-  
 });
 
 
@@ -21,7 +20,6 @@ export default function FilmsProvider({ children }) {
         });
     }, []);
 
-    console.log("films", films)
     
     return (
         <FilmsContext.Provider value={{
