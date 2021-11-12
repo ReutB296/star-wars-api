@@ -50,3 +50,12 @@
     font-size: 30px;
 }
 
+@media screen and (max-width: 1200px) {
+	.home_container{
+       background-image: url('../../img/Vaderz.png');
+	}
+
+    .img_container{
+        display: none;
+    }
+}

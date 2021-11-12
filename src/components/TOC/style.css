@@ -129,7 +129,7 @@ div {
 
 @media screen and (max-width: 1200px) and (min-width:769px){
 	section{
-       bottom: 460px;
+       bottom: 260px;
 	}
 }
 
@@ -166,5 +166,6 @@ div {
 
 	.view a, .view a div{
 		width: fit-content;
+		border-bottom: 1px solid white;
 	}
 }

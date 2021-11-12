@@ -142,6 +142,20 @@
       }
       
   }
+
+  @media screen and (max-width: 768px){
+    .film_container{
+        margin: 30px 25px;
+    }
+
+    .pagination{
+        padding: 0 20px 0 30px;
+    }
+
+    .charList{
+        gap:20px;
+    }
+  }
   
 
 
