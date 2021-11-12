@@ -1,16 +1,18 @@
 .TOC_container{
-    display:flex;
-    flex-direction: column;
-    gap: 50px;
     color: white;
     padding-left: 70px;
     background-image: url('../../img/background_header.jpg');
-
 }
 
 .TOC_container a{
     color: white;
-    text-decoration: none;;
+    text-decoration: none;
+}
+
+.TOC_container > div{
+	display:flex;
+    flex-direction: column;
+	gap: 50px;
 }
 
 
@@ -113,6 +115,18 @@ div {
 	color: white;
 }
 
+.TOC_container #hamburger {
+	background: url("../../img/hamburger.png");
+	background-size: cover;
+	height: 24px;
+	width: 24px;
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	display: none;
+  }
+  
+
 @media screen and (max-width: 1200px) and (min-width:769px){
 	section{
        bottom: 460px;
@@ -129,5 +143,28 @@ div {
 		gap: 30px;
 		padding: 10px 20px;
 		
+	}
+
+	.TOC_container > div{
+		display: none;
+	}
+
+	#hamburger{
+		display: initial !important;
+		position: absolute;
+	}
+
+	.view{
+		display:flex !important;
+		position: relative;
+		left: 60px;
+		padding-bottom: 10px;
+		width: fit-content;
+		
+		
+	}
+
+	.view a, .view a div{
+		width: fit-content;
 	}
 }

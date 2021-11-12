@@ -3,6 +3,7 @@
     height: 100vh;
     flex-direction: column;
     font-family: 'Roboto Mono', monospace;
+    background-color: black;
 }
 
 .main_container{
@@ -22,5 +23,7 @@
 @media screen and (max-width: 768px){
 	.main_container{
       flex-direction: column;
+      min-height: 100vh;
+      height: 100%;
 	}
 }

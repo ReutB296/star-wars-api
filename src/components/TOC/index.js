@@ -1,5 +1,5 @@
 import './style.css';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FilmsContext } from '../../context/FilmsContext';
 import {
     Link,
@@ -8,21 +8,26 @@ import {
 
 export default function TOC (){
     const {films} = useContext(FilmsContext);
+    const [isClicked, setIsClicked] = useState(false);
   
-
+console.log("isClicked",isClicked)
     return(
         <div className="TOC_container">
-            {
-                films.length > 0 ?
+            <button id="hamburger" onClick={() => setIsClicked(!isClicked) }></button>
+            {/* <div className={isClicked && "view"} id="titleList"> */}
+            <div className={isClicked && "view"} >
+                {
+                    films.length > 0 ?
 
-                films.map((film, index) => {return (
-                    <Link key={index} to={`/${film.title}`}>
-                         <div key={index}>{film.title}</div>
-                    </Link>
-                 ) })
-                :
-                <h3 className="loading">Loading...</h3>
-            }
+                    films.map((film, index) => {return (
+                        <Link key={index} to={`/${film.title}`}>
+                            <div key={index}>{film.title}</div>
+                        </Link>
+                    ) })
+                    :
+                    <h3 className="loading">Loading...</h3>
+                }
+            </div>
 
         <section className="the-demo">
                 <div className="example-item">
