@@ -50,3 +50,19 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 480px){
+    .home_container{
+        min-height: 100vh;
+        display: initial;
+        margin: 25px 0;
+        padding: 20px; 
+        max-height: inherit;
+        background-color: transparent;
+    }
+
+    .head{
+        font-size: 1.8em;
+    }
+
+}
