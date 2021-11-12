@@ -149,14 +149,31 @@
   @media screen and (max-width: 768px){
     .film_container{
         margin: 30px 25px;
+        padding: 0;
     }
 
     .pagination{
-        padding: 0 20px 0 30px;
+        padding: 10px 10px 10px 25px;
     }
 
     .charList{
         gap:20px;
+    }
+
+    .charList .char{
+        margin: 0;
+    }
+
+    .paragraph_container{
+        padding: 0;
+    }
+
+    .created, .opening_title, .charList_title{
+        padding: 10px;
+    }
+
+    .paginationBttns{
+        flex-wrap: wrap;
     }
   }
   
