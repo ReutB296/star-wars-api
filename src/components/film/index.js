@@ -68,7 +68,6 @@ export default function Film (){
 
 
     useEffect(() => {
-        console.log("im here", pageNumber)
         if(!characters) return;
         setDisplayCharacters( characters
         .slice(pagesVisited, pagesVisited + charPerPage)
