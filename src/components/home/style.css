@@ -59,6 +59,7 @@
         padding: 20px; 
         max-height: inherit;
         background-color: transparent;
+        background-size: cover;
     }
 
     .head{
