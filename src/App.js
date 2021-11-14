@@ -18,16 +18,19 @@ function App() {
         <FilmsProvider>
             <div className= "page_container">
                   <Header/>
+                 
                   <div className="main_container">
+                  <TOC/>
                       <Switch>
+
                           <Route path="/" exact>
-                              <TOC/>
                               <Home/>
                           </Route>
+
                           <Route path="/:title" >
-                              <TOC/>
                               <Film/>
                           </Route>
+
                       </Switch>
                   </div>
             </div>
